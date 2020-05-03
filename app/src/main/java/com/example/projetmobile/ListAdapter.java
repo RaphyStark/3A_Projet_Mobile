@@ -41,7 +41,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public ListAdapter (List<String> myDataset) {
+    public ListAdapter(List<String> myDataset) {
         values = myDataset;
     }
 
@@ -50,7 +50,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                    int viewType) {
         // create a new view
-        LayoutInflater inflater = LayoutInflater.from(
+        LayoutInflater inflater;
+        inflater = LayoutInflater.from(
                 parent.getContext());
         View v =
                 inflater.inflate(R.layout.row_layout, parent, false);
@@ -64,7 +65,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        final String name = values.get(position);
+        final String name;
+        name = values.get(position);
         holder.txtHeader.setText(name);
         holder.txtHeader.setOnClickListener(new View.OnClickListener() {
             @Override
