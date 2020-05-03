@@ -1,5 +1,6 @@
 package com.example.projetmobile.presentation.view;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,7 +10,10 @@ import android.widget.Toast;
 import com.example.projetmobile.Constants;
 import com.example.projetmobile.R;
 import com.example.projetmobile.presentation.controller.MainController;
+import com.example.projetmobile.presentation.model.Mark;
 import com.google.gson.GsonBuilder;
+
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {

@@ -1,15 +1,25 @@
 package com.example.projetmobile.presentation.controller;
 
-import android.content.SharedPreferences;
-import android.widget.Toast;
-import com.example.projetmobile.Constants;
-import com.example.projetmobile.data.MarkApi;
-import com.example.projetmobile.presentation.view.MainActivity;
-import com.google.gson.Gson;
+//Trick to store json like a String :
+import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
+//Importation of retrofit libs :
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+//Others :
 import java.util.List;
+import android.content.SharedPreferences;
+import com.google.gson.Gson;
+//Importation of necessary packages :
+import com.example.projetmobile.data.MarkApi;
+import com.example.projetmobile.presentation.model.Mark;
+import com.example.projetmobile.presentation.model.RestMarkResponse;
+import com.example.projetmobile.presentation.view.MainActivity;
+import com.example.projetmobile.Constants;
+
 
 public class MainController {
     private SharedPreferences sharedPreferences;
@@ -17,27 +27,35 @@ public class MainController {
     private MainActivity view;
 
 
-    public MainController(MainActivity mainActivity, Gson gson, SharedPreferences sharedPreferences) {
+    public MainController(MainActivity mainActivity, Gson gson, SharedPreferences sharedPreferences)
+    {
         this.view = mainActivity;
         this.gson = gson;
         this.sharedPreferences = sharedPreferences;
     }
 
-    public void onStart() {
+    public void onStart()
+    {
         List<Mark> markList = getDataFromCache();
-        if (markList != null) {
+        if (markList != null)
+        {
             view.showList(markList);
-        } else makeApiCall();
+        }
+        else makeApiCall();
     }
 
 
-    private void makeApiCall() {
+    private void makeApiCall()
+    {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
+
         MarkApi markApi = retrofit.create(MarkApi.class);
+
         Call<RestMarkResponse> call = markApi.getMarkResponse();
+
         call.enqueue(new Callback<RestMarkResponse>() {
             @Override
             public void onResponse(Call<RestMarkResponse> call, Response<RestMarkResponse> response) {
@@ -61,7 +79,6 @@ public class MainController {
                 .edit()
                 .putString(Constants.KEY_MARK_LIST, jsonString)
                 .apply();
-        Toast.makeText(getApplicationContext(), "List Saved", Toast.LENGTH_SHORT).show();
     }
 
     private List<Mark> getDataFromCache() {

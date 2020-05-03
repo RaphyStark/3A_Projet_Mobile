@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projetmobile.R;
+import com.example.projetmobile.presentation.model.Mark;
 
 import java.util.List;
 
