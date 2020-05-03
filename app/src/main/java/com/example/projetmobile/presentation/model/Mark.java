@@ -1,4 +1,4 @@
-package com.example.projetmobile;
+package com.example.projetmobile.presentation.model;
 
 public class Mark {
     private String name;

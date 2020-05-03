@@ -1,4 +1,4 @@
-package com.example.projetmobile;
+package com.example.projetmobile.presentation.view;
 
 
 import android.view.LayoutInflater;
@@ -8,9 +8,12 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.projetmobile.R;
+
 import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
+
     private List<Mark> values;
 
     // Provide a reference to the views for each data item

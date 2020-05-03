@@ -1,6 +1,4 @@
-package com.example.projetmobile;
-
-import java.util.List;
+package com.example.projetmobile.data;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
