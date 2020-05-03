@@ -6,6 +6,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface MarkApi {
-    @GET("")
+    @GET("/RaphyStark/ProjetMobile/master/MarkApi.json")
     Call<RestMarkResponse> getMarkResponse();
 }

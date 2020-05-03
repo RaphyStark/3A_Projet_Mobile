@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String BASE_URL = "https://git....";
+    private static final String BASE_URL = "https://raw.githubusercontent.com";
 
     private RecyclerView recyclerView;
     private ListAdapter mAdapter;
@@ -38,12 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showList() {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        // use this setting to
-        // improve performance if you know that changes
-        // in content do not change the layout size
-        // of the RecyclerView
         recyclerView.setHasFixedSize(true);
-        // use a linear layout manager
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
@@ -51,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 100; i++) {
             input.add("Test" + i);
         }
+
         // define an adapter
         mAdapter = new ListAdapter(input);
         recyclerView.setAdapter(mAdapter);
@@ -69,9 +65,13 @@ public class MainActivity extends AppCompatActivity {
         MarkApi markApi = retrofit.create(MarkApi.class);
 
         Call<RestMarkResponse> call = markApi.getMarkResponse();
+
+        System.out.println(markApi.getMarkResponse().request().url());
+
         call.enqueue(new Callback<RestMarkResponse>() {
             @Override
             public void onResponse(Call<RestMarkResponse> call, Response<RestMarkResponse> response) {
+                System.out.println("response body: "+ response.body());
                 if (response.isSuccessful() && response.body() != null) {
                     List<Mark> markList = response.body().getResults();
                     Toast.makeText(getApplicationContext(), "API Success", Toast.LENGTH_SHORT).show();
@@ -86,6 +86,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showError() {
-        Toast.makeText(getApplicationContext()  , "API Error", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"API Error", Toast.LENGTH_SHORT).show();
     }
 }
