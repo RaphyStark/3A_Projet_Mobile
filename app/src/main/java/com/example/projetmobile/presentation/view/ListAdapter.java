@@ -1,6 +1,5 @@
 package com.example.projetmobile.presentation.view;
 
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,20 +12,21 @@ import com.example.projetmobile.presentation.model.Mark;
 
 import java.util.List;
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
-
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
+{
     private List<Mark> values;
-
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder
+    {
         // each data item is just a string in this case
         public TextView txtHeader;
         public TextView txtFooter;
         public View layout;
 
-        public ViewHolder(View v) {
+        public ViewHolder(View v)
+        {
             super(v);
             layout = v;
             txtHeader = (TextView) v.findViewById(R.id.firstLine);
@@ -45,14 +45,15 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public ListAdapter(List<Mark> myDataset) {
+    public ListAdapter(List<Mark> myDataset)
+    {
         values = myDataset;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
+    public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+    {
         // create a new view
         LayoutInflater inflater;
         inflater = LayoutInflater.from(
@@ -66,15 +67,17 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position)
+    {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         final Mark currentMark = values.get(position);
         holder.txtHeader.setText(currentMark.getName());
-        holder.txtHeader.setOnClickListener(new View.OnClickListener() {
+        holder.txtHeader.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
-                remove(position);
+                //remove(position);
             }
         });
 
@@ -83,8 +86,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
-    public int getItemCount() {
+    public int getItemCount()
+    {
         return values.size();
     }
-
 }
