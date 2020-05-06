@@ -1,6 +1,5 @@
 package com.example.projetmobile.presentation.view;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,15 +11,14 @@ import com.example.projetmobile.R;
 import com.example.projetmobile.presentation.controller.MainController;
 import com.example.projetmobile.presentation.model.Mark;
 import com.google.gson.GsonBuilder;
-
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
     private RecyclerView recyclerView;
     private ListAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-
     private MainController controller;
 
     @Override
@@ -42,11 +40,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showList(List<Mark> markList) {
+        mAdapter = new ListAdapter(markList);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        mAdapter = new ListAdapter(markList);
         recyclerView.setAdapter(mAdapter); }
 
     public void showError() {

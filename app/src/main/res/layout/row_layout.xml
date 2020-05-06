@@ -12,7 +12,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginEnd="6dip"
         android:contentDescription="TODO"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@drawable/" />
 
     <TextView
         android:id="@+id/secondLine"

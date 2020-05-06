@@ -15,8 +15,6 @@ import com.example.projetmobile.R;
 
 public class FirstFragment extends Fragment {
 
-    TextView showCountTextView;
-
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -26,20 +24,19 @@ public class FirstFragment extends Fragment {
         View fragmentFistLayout = inflater.inflate(R.layout.fragment_first, container, false);
         //return inflater.inflate(R.layout.fragment_first, container, false);
         // Get the count text view
-        showCountTextView = fragmentFistLayout.findViewById(R.id.TextView_first);
+        TextView showCountTextView = fragmentFistLayout.findViewById(R.id.TextView_first);
         return fragmentFistLayout;
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        /*view.findViewById(R.id.random_button).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.button_first).setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+            public void onClick(View view)
+            {
             }
-        });*/
+        });
 
         view.findViewById(R.id.toast_button).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,12 +45,5 @@ public class FirstFragment extends Fragment {
                 myToast.show();
             }
         });
-
-        /*view.findViewById(R.id.count_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                countMe(view);
-            }
-        });*/
     }
 }

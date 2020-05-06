@@ -2,6 +2,5 @@
 <resources>
     <item name="button_first" type="id" />
     <item name="TextView_first" type="id" />
-    <item name="action_FirstFragment_to_SecondFragment" type="id" />
     <item name="toast_button" type="id" />
 </resources>

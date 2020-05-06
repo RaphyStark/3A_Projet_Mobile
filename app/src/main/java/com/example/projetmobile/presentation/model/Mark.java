@@ -1,6 +1,9 @@
 package com.example.projetmobile.presentation.model;
 
-public class Mark {
+import android.graphics.drawable.Drawable;
+
+public class Mark
+{
     private String name;
     private String url;
     private String film;
@@ -9,11 +12,9 @@ public class Mark {
         return name;
     }
 
-    public String getUrl() {
-        return url;
+    public Drawable getUrl() {
+        return Drawable.createFromPath(url);
     }
 
     public String getFilm() { return film; }
-
-
 }
