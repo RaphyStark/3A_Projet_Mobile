@@ -1,6 +1,8 @@
 package com.example.projetmobile.presentation.view;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.projetmobile.Constants;
 import com.example.projetmobile.R;
 import com.example.projetmobile.presentation.model.Mark;
 import com.squareup.picasso.Picasso;
@@ -65,10 +69,15 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         final Mark currentMark = values.get(position);
         holder.txtHeader.setText(currentMark.getName());
         holder.txtFooter.setText(currentMark.getFilm());
-        //try to get the picture from drawable and to put it in each view
-        //holder.photo.setImageDrawable(currentMark.getUrl());
-        //Picasso.with(mContext).load(new File(pathname)).into(imageView);
-        //  Picasso.with(mContext).load("http://i.imgur.com/DvpvklR.png").into(holder.photo);
+
+        String pathName = Constants.BASE_URL2;
+        String picName = currentMark.getUrl();
+        String allPath = pathName+"/"+picName+".jpg";
+        System.out.println(allPath);
+
+        Picasso.get()
+                                    .load(allPath)
+                                    .into(holder.photo);
 
     }
 
