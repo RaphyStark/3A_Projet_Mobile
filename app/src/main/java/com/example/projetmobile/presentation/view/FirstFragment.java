@@ -18,14 +18,11 @@ public class FirstFragment extends Fragment {
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState
-    ) {
+            Bundle savedInstanceState)
+    {
         // Inflate the layout for this fragment
-        View fragmentFistLayout = inflater.inflate(R.layout.fragment_first, container, false);
-        //return inflater.inflate(R.layout.fragment_first, container, false);
-        // Get the count text view
-        TextView showCountTextView = fragmentFistLayout.findViewById(R.id.TextView_first);
-        return fragmentFistLayout;
+        View fragmentFirstLayout = inflater.inflate(R.layout.fragment_first, container, false);
+        return inflater.inflate(R.layout.fragment_first, container, false);
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -35,6 +32,8 @@ public class FirstFragment extends Fragment {
             @Override
             public void onClick(View view)
             {
+                NavHostFragment.findNavController(FirstFragment.this)
+                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
             }
         });
 

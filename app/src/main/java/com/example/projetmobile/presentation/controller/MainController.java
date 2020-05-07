@@ -22,10 +22,9 @@ import com.example.projetmobile.Constants;
 
 
 public class MainController {
-    private SharedPreferences sharedPreferences;
-    private Gson gson;
     private MainActivity view;
-
+    private Gson gson;
+    private SharedPreferences sharedPreferences;
 
     public MainController(MainActivity mainActivity, Gson gson, SharedPreferences sharedPreferences)
     {

@@ -11,6 +11,9 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.projetmobile.R;
 import com.example.projetmobile.presentation.model.Mark;
+import com.squareup.picasso.Picasso;
+
+import java.io.File;
 import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
@@ -45,29 +48,28 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         }
     }
 
-    // Create new views (invoked by the layout manager)
     @Override
     public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         LayoutInflater inflater;
         inflater = LayoutInflater.from(
                 parent.getContext());
-        View v =
-                inflater.inflate(R.layout.row_layout, parent, false);
-        // set the view's size, margins, paddings and layout parameters
+        View v = inflater.inflate(R.layout.row_layout, parent, false);
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
+        //String pathname = "C:\\Users\\user\\AndroidStudioProjects\\ProjetMobile\\app\\src\\main\\res\\drawable\\mark_1.jpg";
         final Mark currentMark = values.get(position);
-        holder.photo.setImageDrawable(currentMark.getUrl());
         holder.txtHeader.setText(currentMark.getName());
         holder.txtFooter.setText(currentMark.getFilm());
+        //try to get the picture from drawable and to put it in each view
+        //holder.photo.setImageDrawable(currentMark.getUrl());
+        //Picasso.with(mContext).load(new File(pathname)).into(imageView);
+        //  Picasso.with(mContext).load("http://i.imgur.com/DvpvklR.png").into(holder.photo);
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)
