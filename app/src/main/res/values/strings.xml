@@ -4,6 +4,11 @@
     <string name="next">Come in !</string>
     <string name="toast_button">Hello Toast</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="first_fragment_label">first_fragment</string>
+    <string name="second_fragment_label">second_fragment</string>
+    <string name="todo">TODO</string>
+    <string name="description">Description</string>
+    <string name="example_application">Example application</string>
+
 </resources>

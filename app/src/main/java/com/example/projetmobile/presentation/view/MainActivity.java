@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity
     private RecyclerView recyclerView;
     private MainController controller;
     private ListAdapter mAdapter;
-    ImageView imageView;
+    private ImageView imageView;
 
 
     @Override
@@ -46,9 +46,7 @@ public class MainActivity extends AppCompatActivity
         //get data from cache or make a Api Call :
         controller.onStart();
         imageView = findViewById(R.id.icon);
-        //Picasso.get()
-                //.load("drawable/mark_1.jpg").into(imageView);
-                //.load("http://i.imgur.com/DvpvklR.png").into(imageView);
+
 
     }
 

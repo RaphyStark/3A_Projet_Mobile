@@ -6,13 +6,19 @@ public class Mark
     private String url;
     private String film;
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public String getUrl() {
+    public String getUrl()
+    {
         return url;
     }
 
-    public String getFilm() { return film; }
+    public String getFilm()
+    {
+        return film;
+    }
+
 }
