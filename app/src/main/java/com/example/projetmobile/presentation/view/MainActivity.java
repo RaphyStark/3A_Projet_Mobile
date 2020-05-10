@@ -1,17 +1,18 @@
 package com.example.projetmobile.presentation.view;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.projetmobile.Constants;
 import com.example.projetmobile.R;
+import com.example.projetmobile.Singletons;
 import com.example.projetmobile.presentation.controller.MainController;
 import com.example.projetmobile.presentation.model.Mark;
-import com.google.gson.GsonBuilder;
 import java.util.List;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import android.widget.Toast;
-import android.content.Context;
-import android.os.Bundle;
 
 
 public class MainActivity extends AppCompatActivity
@@ -26,16 +27,10 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        controller = new MainController
-                (
+        controller = new MainController(
                 this,
-                new GsonBuilder()
-                    .setLenient()
-                    .create(),
-                getSharedPreferences(Constants.KEY_APP_MARK, Context.MODE_PRIVATE)
-                );
-
+                Singletons.getGson(),
+                Singletons.getSharedPreferences(getApplicationContext()));
         controller.onStart();
     }
 
@@ -52,7 +47,6 @@ public class MainActivity extends AppCompatActivity
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -64,6 +58,15 @@ public class MainActivity extends AppCompatActivity
     public void navigateToDetails(Mark mark)
     {
         Toast.makeText(getApplicationContext(), "TODO NAVIGATE", Toast.LENGTH_SHORT).show();
+        /*Intent myIntent = new Intent(MainActivity.this, DetailActivity.class);
+        myIntent.putExtra("markKeyName", mark.getName());
+        myIntent.putExtra("markKeyFilm", mark.getFilm());
+        String pathName = Constants.BASE_URL2;
+        String picName = mark.getUrl();
+        String allPath = pathName+picName+".jpg"
+        myIntent.putExtra("markKeyPic", allPath);
+        MainActivity.this.startActivity(myIntent);
+        */
     }
 
 }

@@ -1,24 +1,18 @@
 package com.example.projetmobile.presentation.controller;
 
-//Trick to store json like a String :
-import com.google.gson.reflect.TypeToken;
-import java.lang.reflect.Type;
-//Importation of retrofit libs :
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-//Others :
-import java.util.List;
 import android.content.SharedPreferences;
-import com.google.gson.Gson;
-//Importation of necessary packages :
-import com.example.projetmobile.data.MarkApi;
+import com.example.projetmobile.Constants;
+import com.example.projetmobile.Singletons;
 import com.example.projetmobile.presentation.model.Mark;
 import com.example.projetmobile.presentation.model.RestMarkResponse;
 import com.example.projetmobile.presentation.view.MainActivity;
-import com.example.projetmobile.Constants;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
+import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class MainController
@@ -47,15 +41,7 @@ public class MainController
 
     private void makeApiCall()
     {
-        Retrofit retrofit = new Retrofit.Builder()
-                                    .baseUrl(Constants.BASE_URL)
-                                    .addConverterFactory(GsonConverterFactory.create(gson))
-                                    .build();
-
-        MarkApi markApi = retrofit.create(MarkApi.class);
-
-        Call<RestMarkResponse> call = markApi.getMarkResponse();
-
+        Call<RestMarkResponse> call = Singletons.getMarkApi().getMarkResponse();
         call.enqueue(new Callback<RestMarkResponse>()
         {
             @Override
@@ -71,7 +57,8 @@ public class MainController
             }
 
             @Override
-            public void onFailure(Call<RestMarkResponse> call, Throwable t) {
+            public void onFailure(Call<RestMarkResponse> call, Throwable t)
+            {
                 view.showError();
             }
         });

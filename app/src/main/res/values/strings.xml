@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ProjetMobile</string>
+    <string name="app_name">IronMan</string>
     <string name="hello_first_fragment">Iron Man Dressing</string>
     <string name="next">Come in !</string>
     <string name="toast_button">Hello Toast</string>
@@ -10,5 +10,6 @@
     <string name="todo">TODO</string>
     <string name="description">Description</string>
     <string name="example_application">Example application</string>
+    <string name="detail_display">Detail Display</string>
 
 </resources>
