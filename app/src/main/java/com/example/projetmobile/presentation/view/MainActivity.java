@@ -57,15 +57,14 @@ public class MainActivity extends AppCompatActivity
 
     public void navigateToDetails(Mark mark)
     {
-        Toast.makeText(getApplicationContext(), "TODO NAVIGATE", Toast.LENGTH_SHORT).show();
-        /*Intent myIntent = new Intent(MainActivity.this, DetailActivity.class);
-        myIntent.putExtra("markKeyName", mark.getName());
-        myIntent.putExtra("markKeyFilm", mark.getFilm());
+        Intent myIntent = new Intent(MainActivity.this, DetailActivity.class);
+        myIntent.putExtra("markKey", Singletons.getGson().toJson(mark));
+        MainActivity.this.startActivity(myIntent);
+        /*
         String pathName = Constants.BASE_URL2;
         String picName = mark.getUrl();
         String allPath = pathName+picName+".jpg"
         myIntent.putExtra("markKeyPic", allPath);
-        MainActivity.this.startActivity(myIntent);
         */
     }
 
