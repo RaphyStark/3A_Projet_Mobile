@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.projetmobile.Constants;
 import com.example.projetmobile.R;
@@ -16,13 +15,20 @@ import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
 {
-    private List<Mark> values;
-    private ViewGroup parent;
-    private int viewType;
+    private final List<Mark> values;
+    private final OnItemClickListener listener;
 
-    ListAdapter(List<Mark> markList)
+
+    public interface OnItemClickListener
     {
-        values = markList;
+            void onItemClick (Mark item);
+    }
+
+
+    ListAdapter(List<Mark> markList, OnItemClickListener listener)
+    {
+        this.values = markList;
+        this.listener = listener;
     }
 
 
@@ -48,8 +54,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
     @Override
     public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        this.parent = parent;
-        this.viewType = viewType;
         LayoutInflater inflater;
         inflater = LayoutInflater.from(
                 parent.getContext());
@@ -69,6 +73,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
         Picasso.get()
                     .load(allPath)
                     .into(holder.photo);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                listener.onItemClick(currentMark);
+            }
+        });
+
     }
 
     @Override

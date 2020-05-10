@@ -21,7 +21,8 @@ import com.example.projetmobile.presentation.view.MainActivity;
 import com.example.projetmobile.Constants;
 
 
-public class MainController {
+public class MainController
+{
     private MainActivity view;
     private Gson gson;
     private SharedPreferences sharedPreferences;
@@ -47,22 +48,26 @@ public class MainController {
     private void makeApiCall()
     {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
+                                    .baseUrl(Constants.BASE_URL)
+                                    .addConverterFactory(GsonConverterFactory.create(gson))
+                                    .build();
 
         MarkApi markApi = retrofit.create(MarkApi.class);
 
         Call<RestMarkResponse> call = markApi.getMarkResponse();
 
-        call.enqueue(new Callback<RestMarkResponse>() {
+        call.enqueue(new Callback<RestMarkResponse>()
+        {
             @Override
-            public void onResponse(Call<RestMarkResponse> call, Response<RestMarkResponse> response) {
-                if (response.isSuccessful() && response.body() != null) {
+            public void onResponse(Call<RestMarkResponse> call, Response<RestMarkResponse> response)
+            {
+                if (response.isSuccessful() && response.body() != null)
+                {
                     List<Mark> markList = response.body().getResults();
                     saveList(markList);
                     view.showList(markList);
-                } else view.showError();
+                }
+                else view.showError();
             }
 
             @Override
@@ -72,7 +77,8 @@ public class MainController {
         });
     }
 
-    private void saveList(List<Mark> markList) {
+    private void saveList(List<Mark> markList)
+    {
         String jsonString = gson.toJson(markList);
         sharedPreferences
                 .edit()
@@ -80,14 +86,23 @@ public class MainController {
                 .apply();
     }
 
-    private List<Mark> getDataFromCache() {
+    private List<Mark> getDataFromCache()
+    {
         String jsonMark = sharedPreferences.getString(Constants.KEY_MARK_LIST, null);
-        if (jsonMark == null) {
+        if (jsonMark == null)
+        {
             return null;
-        } else {
+        }
+        else {
             Type listType = new TypeToken<List<Mark>>() {
             }.getType();
             return gson.fromJson(jsonMark, listType);
         }
     }
+
+    public void onItemClick(Mark mark)
+    {
+        view.navigateToDetails(mark);
+    }
+
 }
