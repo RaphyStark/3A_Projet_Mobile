@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.projetmobile.Constants;
 import com.example.projetmobile.R;
 import com.example.projetmobile.Singletons;
+import com.example.projetmobile.data.MarkRepository;
 import com.example.projetmobile.presentation.controller.MainController;
 import com.example.projetmobile.presentation.model.Mark;
 import java.util.List;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity
     private RecyclerView recyclerView;
     private MainController controller;
     private ListAdapter mAdapter;
+    private MarkRepository markRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -29,11 +31,14 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         controller = new MainController(
                 this,
+                markRepository);
+                /*
+                this,
                 Singletons.getGson(),
                 Singletons.getSharedPreferences(getApplicationContext()));
-        controller.onStart();
+                */
+      //  controller.onStart();
     }
-
 
     public void showList(List<Mark> markList)
     {

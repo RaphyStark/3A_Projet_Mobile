@@ -19,6 +19,8 @@ public class DetailActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+
+
         txtDetail = findViewById(R.id.description_mark);
         Intent intent = getIntent();
         String markJson = intent.getStringExtra("markKey");

@@ -1,44 +1,68 @@
 package com.example.projetmobile.presentation.controller;
 
-import android.content.SharedPreferences;
-import com.example.projetmobile.Constants;
-import com.example.projetmobile.Singletons;
+import com.example.projetmobile.data.MarkCallback;
+import com.example.projetmobile.data.MarkRepository;
 import com.example.projetmobile.presentation.model.Mark;
-import com.example.projetmobile.presentation.model.RestMarkResponse;
 import com.example.projetmobile.presentation.view.MainActivity;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import java.lang.reflect.Type;
+
 import java.util.List;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
 public class MainController
 {
     private MainActivity view;
-    private Gson gson;
-    private SharedPreferences sharedPreferences;
+    private MarkRepository markRepository;
 
-    public MainController(MainActivity mainActivity, Gson gson, SharedPreferences sharedPreferences)
+    public MainController(MainActivity mainActivity, MarkRepository markRepository)
     {
         this.view = mainActivity;
-        this.gson = gson;
-        this.sharedPreferences = sharedPreferences;
-    }
+        //this.markRepository = markRepository;
+        markRepository.getMarkResponse(new MarkCallback()
+        {
+            @Override
+            public void onSuccess(List<Mark> response)
+            {
+                view.showList(response);
+            }
 
+            @Override
+            public void onFailed()
+            {
+                view.showError();
+            }
+        });
+
+        this.markRepository = markRepository;
+
+
+    }
+/*
     public void onStart()
     {
-        List<Mark> markList = getDataFromCache();
-        if (markList != null)
+        MarkCallback toto = new MarkCallback()
         {
-            view.showList(markList);
-        }
-        else makeApiCall();
+            @Override
+            public void onSuccess(List<Mark> response)
+            {
+                view.showList(response);
+            }
+
+            @Override
+            public void onFailed()
+            {
+                view.showError();
+            }
+        };
+
+        System.out.println(toto);
+        markRepository.getMarkResponse(toto);
     }
-
-
+*/
+    public void onItemClick(Mark mark)
+    {
+        view.navigateToDetails(mark);
+    }
+    /*
     private void makeApiCall()
     {
         Call<RestMarkResponse> call = Singletons.getMarkApi().getMarkResponse();
@@ -63,33 +87,5 @@ public class MainController
             }
         });
     }
-
-    private void saveList(List<Mark> markList)
-    {
-        String jsonString = gson.toJson(markList);
-        sharedPreferences
-                .edit()
-                .putString(Constants.KEY_MARK_LIST, jsonString)
-                .apply();
-    }
-
-    private List<Mark> getDataFromCache()
-    {
-        String jsonMark = sharedPreferences.getString(Constants.KEY_MARK_LIST, null);
-        if (jsonMark == null)
-        {
-            return null;
-        }
-        else {
-            Type listType = new TypeToken<List<Mark>>() {
-            }.getType();
-            return gson.fromJson(jsonMark, listType);
-        }
-    }
-
-    public void onItemClick(Mark mark)
-    {
-        view.navigateToDetails(mark);
-    }
-
+    */
 }
