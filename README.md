@@ -14,17 +14,17 @@ Elle présente deux écrans : le premier pour l'affichage de la liste et le seco
 * Données stockées dans le cache
 * Architecture MVC (+data)
 * Singletons utilisés pour les objets : 
-*Gson
-*SharedPreferences
-*MarkApi
+  * Gson
+  * SharedPreferences
+  * MarkApi
 * Principe SOLID respecté notamment S et D :
-*S (Responsabilité unique) : chaque méthode n'a qu'une responsabilité, idem pour les classes
-*D (Inversion des dépendances) : des interfaces ont été crée justement dans le but de dépendre d'abstractions et non d'implémentation spécifique à chaque méthode.
+  * S (Responsabilité unique) : chaque méthode n'a qu'une responsabilité, idem pour les classes
+  * D (Inversion des dépendances) : des interfaces ont été crée justement dans le but de dépendre d'abstractions et non d'implémentation spécifique à chaque méthode.
 * 1 controller par activity
 * Divers design patterns
 * Gitflow : 
-*un commit par grande avancée
-*une branche créee pour reprendre plus tard le projet en clean architecture (cf. dernier paragraphe du readme)
+  * un commit par grande avancée
+  * une branche créee pour reprendre plus tard le projet en clean architecture (cf. dernier paragraphe du readme)
 
 
 ### Fonctionalités
