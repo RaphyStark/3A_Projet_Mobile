@@ -10,6 +10,9 @@
     <string name="todo">TODO</string>
     <string name="description">Description</string>
     <string name="example_application">Example application</string>
-    <string name="detail_display">Detail Display</string>
+
+    <string name="mFilm">film</string>
+    <string name="mName">name</string>
+
 
 </resources>

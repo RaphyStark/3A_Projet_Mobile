@@ -1,5 +1,6 @@
 package com.example.projetmobile.presentation.view;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -16,12 +17,16 @@ import com.example.projetmobile.presentation.model.Mark;
 import com.squareup.picasso.Picasso;
 
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity
+{
     private DetailController controller;
-    private TextView txtDetail;
-    private ImageView imageDetail;
+    private ImageView mPic;
+    private TextView mName;
+    private TextView mFilm;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
@@ -35,19 +40,22 @@ public class DetailActivity extends AppCompatActivity {
 
     public void showDetail()
     {
-        txtDetail = findViewById(R.id.description_mark);
-        imageDetail = findViewById(R.id.image_mark);
         Intent intent = getIntent();
         String markJson = intent.getStringExtra("markKey");
         Mark mark = Singletons.getGson().fromJson(markJson, Mark.class);
-        txtDetail.setText(mark.getName());
 
+        mName = findViewById(R.id.name_mark);
+        mFilm = findViewById(R.id.film_mark);
+        mPic = findViewById(R.id.image_mark);
+
+        mName.setText(mark.getName());
+        mFilm.setText(mark.getFilm());
         String pathName = Constants.BASE_URL2;
         String picName = mark.getUrl();
         String allPath = pathName+picName+".jpg";
         Picasso.get()
                 .load(allPath)
-                .into(imageDetail);
+                .into(mPic);
     }
 
     public void showError()
