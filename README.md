@@ -30,7 +30,7 @@ Elle présente deux écrans : le premier pour l'affichage de la liste et le seco
 ### Fonctionalités
 |Premier écran|Deuxième écran|
 |------------|-------------|
-| <img src="https://raw.githubusercontent.com/RaphyStark/ProjetMobile/master/img_readme/v1.png" width="100"> | <img src="https://raw.githubusercontent.com/RaphyStark/ProjetMobile/master/img_readme/Mark1.png" width="100"> |
+| <img src="https://raw.githubusercontent.com/RaphyStark/ProjetMobile/master/img_readme/v1.png" width="275"> | <img src="https://raw.githubusercontent.com/RaphyStark/ProjetMobile/master/img_readme/Mark1.png" width="275"> |
 
 
 ### A améliorer dans de prochaines versions
