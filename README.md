@@ -29,8 +29,10 @@ Gitflow : un commit par grande avancée / une branche créee pour reprendre plus
 
 
 ### Fonctionalités
+|Premier écran|Deuxième écran|
+|------------|-------------|
+| <img src="https://raw.githubusercontent.com/RaphyStark/ProjetMobile/master/img_readme/v1.png" width="100"> | <img src="https://raw.githubusercontent.com/RaphyStark/ProjetMobile/master/img_readme/Mark1.png" width="100"> |
 
-#### Premier écran :
-<img src="https://raw.githubusercontent.com/RaphyStark/ProjetMobile/master/img_readme/v1.png" width="100">
-#### Deuxième écran :
-<img src="https://raw.githubusercontent.com/RaphyStark/ProjetMobile/master/img_readme/Mark1.png" width="100">
+
+
+
