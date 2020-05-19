@@ -6,4 +6,4 @@
 ### Consignes respectées
 
 ### Fonctionalités
-<img src="https://raw.githubusercontent.com/RaphyStark/ProjetMobile/master/img_readme/Mark1.png" width="250">
+<img src="https://raw.githubusercontent.com/RaphyStark/ProjetMobile/master/img_readme/Mark1.png" width="100">
